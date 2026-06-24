@@ -22,8 +22,21 @@ Route::prefix('v1')->group(function () {
 
         // Admin Routes
         Route::prefix('admin')->middleware('role:super_admin|administrator')->group(function () {
+
+            // User & Role Management
             Route::apiResource('users', \App\Http\Controllers\Api\V1\Admin\UserController::class);
             Route::apiResource('roles', \App\Http\Controllers\Api\V1\Admin\RoleController::class);
+
+            // Academic Structure
+            Route::apiResource('colleges', \App\Http\Controllers\Api\V1\Admin\CollegeController::class);
+            Route::apiResource('departments', \App\Http\Controllers\Api\V1\Admin\DepartmentController::class);
+            Route::apiResource('programs', \App\Http\Controllers\Api\V1\Admin\ProgramController::class);
+            Route::apiResource('subjects', \App\Http\Controllers\Api\V1\Admin\SubjectController::class);
+            Route::apiResource('sections', \App\Http\Controllers\Api\V1\Admin\SectionController::class);
+
+            // Academic Calendar
+            Route::apiResource('academic-years', \App\Http\Controllers\Api\V1\Admin\AcademicYearController::class);
+            Route::apiResource('semesters', \App\Http\Controllers\Api\V1\Admin\SemesterController::class);
         });
 
         // Faculty Routes
