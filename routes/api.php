@@ -37,6 +37,12 @@ Route::prefix('v1')->group(function () {
             // Academic Calendar
             Route::apiResource('academic-years', \App\Http\Controllers\Api\V1\Admin\AcademicYearController::class);
             Route::apiResource('semesters', \App\Http\Controllers\Api\V1\Admin\SemesterController::class);
+
+            // Import Routes
+            Route::prefix('import')->group(function () {
+                Route::post('students', [\App\Http\Controllers\Api\V1\Admin\ImportController::class, 'importStudents']);
+                Route::post('faculty', [\App\Http\Controllers\Api\V1\Admin\ImportController::class, 'importFaculty']);
+            });
         });
 
         // Faculty Routes
