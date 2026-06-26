@@ -43,6 +43,11 @@ Route::prefix('v1')->group(function () {
                 Route::post('students', [\App\Http\Controllers\Api\V1\Admin\ImportController::class, 'importStudents']);
                 Route::post('faculty', [\App\Http\Controllers\Api\V1\Admin\ImportController::class, 'importFaculty']);
             });
+
+            // Academic Assignments
+            Route::apiResource('student-enrollments', \App\Http\Controllers\Api\V1\Admin\StudentEnrollmentController::class);
+            Route::apiResource('faculty-assignments', \App\Http\Controllers\Api\V1\Admin\FacultyAssignmentController::class);
+            Route::apiResource('student-sections', \App\Http\Controllers\Api\V1\Admin\StudentSectionController::class);
         });
 
         // Faculty Routes

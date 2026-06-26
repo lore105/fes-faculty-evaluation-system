@@ -29,6 +29,16 @@ class Semester extends Model
     {
         return $this->belongsTo(AcademicYear::class);
     }
+
+    public function studentEnrollments()
+    {
+        return $this->hasMany(StudentEnrollment::class);
+    }
+
+    public function facultyAssignments()
+    {
+        return $this->hasMany(FacultyAssignment::class);
+    }
 }
 
 

@@ -48,4 +48,26 @@ class User extends Authenticatable
     {
         return trim("{$this->first_name} {$this->middle_name} {$this->last_name}");
     }
+
+    // Student relationships
+    public function enrollments()
+    {
+        return $this->hasMany(StudentEnrollment::class);
+    }
+
+    public function studentSections()
+    {
+        return $this->hasMany(StudentSection::class);
+    }
+
+    // Faculty relationships
+    public function facultyAssignments()
+    {
+        return $this->hasMany(FacultyAssignment::class);
+    }
+
+    public function facultySections()
+    {
+        return $this->hasMany(FacultySection::class);
+    }
 }

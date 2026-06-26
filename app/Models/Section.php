@@ -27,4 +27,24 @@ class Section extends Model
     {
         return $this->belongsTo(Program::class);
     }
+
+    public function studentEnrollments()
+    {
+        return $this->hasMany(StudentEnrollment::class);
+    }
+
+    public function studentSections()
+    {
+        return $this->hasMany(StudentSection::class);
+    }
+
+    public function facultyAssignments()
+    {
+        return $this->hasMany(FacultyAssignment::class);
+    }
+
+    public function facultySections()
+    {
+        return $this->hasMany(FacultySection::class);
+    }
 }

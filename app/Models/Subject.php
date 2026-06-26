@@ -28,4 +28,14 @@ class Subject extends Model
     {
         return $this->belongsTo(Program::class);
     }
+
+    public function enrollments()
+    {
+        return $this->hasMany(StudentEnrollment::class);
+    }
+
+    public function facultyAssignments()
+    {
+        return $this->hasMany(FacultyAssignment::class);
+    }
 }
