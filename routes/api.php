@@ -59,18 +59,27 @@ Route::prefix('v1')->group(function () {
 
             // Evaluation Period
             Route::apiResource('evaluation-periods', \App\Http\Controllers\Api\V1\Admin\EvaluationPeriodController::class);
+
+
         });
 
         // Faculty Routes
         Route::prefix('faculty')->middleware('role:faculty')->group(function () {
-            Route::get('evaluations', [\App\Http\Controllers\Api\V1\Faculty\FacultyEvaluationController::class, 'index']);
-            Route::get('results', [\App\Http\Controllers\Api\V1\Faculty\FacultyEvaluationController::class, 'results']);
+            Route::get('eligible-faculty', [\App\Http\Controllers\Api\V1\Evaluation\EvaluationController::class, 'getEligibleFaculty']);
+            Route::get('results', [\App\Http\Controllers\Api\V1\Evaluation\EvaluationController::class, 'results']);
         });
 
         // Student Routes
         Route::prefix('student')->middleware('role:student')->group(function () {
-            Route::get('evaluations', [\App\Http\Controllers\Api\V1\Student\StudentEvaluationController::class, 'index']);
-            Route::post('evaluations/submit', [\App\Http\Controllers\Api\V1\Student\StudentEvaluationController::class, 'submit']);
+            Route::get('eligible-faculty', [\App\Http\Controllers\Api\V1\Evaluation\EvaluationController::class, 'getEligibleFaculty']);
+            Route::post('evaluations/submit', [\App\Http\Controllers\Api\V1\Evaluation\EvaluationController::class, 'submit']);
+        });
+
+        // Evaluation Routes — shared
+        Route::prefix('evaluations')->group(function () {
+            Route::get('eligible-faculty', [\App\Http\Controllers\Api\V1\Evaluation\EvaluationController::class, 'getEligibleFaculty']);
+            Route::post('submit', [\App\Http\Controllers\Api\V1\Evaluation\EvaluationController::class, 'submit']);
+            Route::get('results', [\App\Http\Controllers\Api\V1\Evaluation\EvaluationController::class, 'results']);
         });
 
     });
