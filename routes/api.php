@@ -48,6 +48,17 @@ Route::prefix('v1')->group(function () {
             Route::apiResource('student-enrollments', \App\Http\Controllers\Api\V1\Admin\StudentEnrollmentController::class);
             Route::apiResource('faculty-assignments', \App\Http\Controllers\Api\V1\Admin\FacultyAssignmentController::class);
             Route::apiResource('student-sections', \App\Http\Controllers\Api\V1\Admin\StudentSectionController::class);
+
+            // Evaluation Governance
+            Route::apiResource('evaluation-templates', \App\Http\Controllers\Api\V1\Admin\EvaluationTemplateController::class);
+            Route::apiResource('evaluation-categories', \App\Http\Controllers\Api\V1\Admin\EvaluationCategoryController::class);
+            Route::apiResource('evaluation-questions', \App\Http\Controllers\Api\V1\Admin\EvaluationQuestionController::class);
+            Route::apiResource('rating-scales', \App\Http\Controllers\Api\V1\Admin\RatingScaleController::class);
+            Route::apiResource('interpretation-rules', \App\Http\Controllers\Api\V1\Admin\InterpretationRuleController::class);
+            Route::apiResource('recommendation-rules', \App\Http\Controllers\Api\V1\Admin\RecommendationRuleController::class);
+
+            // Evaluation Period
+            Route::apiResource('evaluation-periods', \App\Http\Controllers\Api\V1\Admin\EvaluationPeriodController::class);
         });
 
         // Faculty Routes
